@@ -12,7 +12,11 @@ class HomeController < ApplicationController
 
   def index
     find first post
-    find all posts
+    find add posts
+  end
+
+  def search
+    find all posts with title params[:post_title]
   end
 end
 ```
