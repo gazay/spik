@@ -11,12 +11,12 @@ module Spike
       Rails.logger.info 'model_names include this method with s: ' + method
       Rails.logger.info 'args for this method: ' + args.to_s
       Rails.logger.info '-------- '
-      [variable_method(method, method), args].flatten
+      [method, args]
     elsif model_names.include?(method[0..-2])
       Rails.logger.info 'model_names include this method without s: ' + method
       Rails.logger.info 'args for this method: ' + args.to_s
       Rails.logger.info '-------- '
-      [variable_method(method, method[0..-2]), args].flatten
+      [method[0..-2], args]
     elsif WHICH_NAMES.include?(method)
       Rails.logger.info 'which_names include this method: ' + method
       Rails.logger.info 'args for this method: ' + args.to_s
@@ -52,20 +52,28 @@ module Spike
     end
   end
 
-  def variable_method(variable_name, model_name)
-    instance_variable_get('@' + variable_name) && '@' + variable_name || model_name
-  end
-
   def execute_method(method, args)
     Rails.logger.info 'in model: ' + args[1].capitalize + ', execute method: ' + method + ', with args: ' + args.to_s
-    if args[0] == 'all'
-      if args.size > 2
-        instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym, :conditions => args[2]))
-      else
-        instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym))
+    if method == 'delete'
+      if args[0] == 'all'
+        args[1].capitalize.constantize.send('delete_all', args[2])
+      elsif args[2] =~ /id/
+        id = args[2].match(/(\d+)/)[0]
+        args[1].capitalize.constantize.send('delete', id)
+      elsif args[1] =~ /id/
+        id = args[1].match(/(\d+)/)[0]
+        args[0].capitalize.constantize.send('delete', id)
       end
     else
-      instance_variable_set(('@' + args[1]), args[1].capitalize.constantize.send(method, args[0].to_sym))
+      if args[0] == 'all'
+        if args.size > 2
+          instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym, :conditions => args[2]))
+        else
+          instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym))
+        end
+      else
+        instance_variable_set(('@' + args[1]), args[1].capitalize.constantize.send(method, args[0].to_sym))
+      end
     end
   end
 
