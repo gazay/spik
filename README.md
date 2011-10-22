@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def index
     find first post
-    find add posts
+    find all posts
   end
 
   def search
