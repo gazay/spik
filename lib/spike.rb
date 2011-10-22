@@ -40,7 +40,11 @@ module Spike
       Rails.logger.info 'attributes include this method: ' + method
       Rails.logger.info 'args for this method: ' + args.to_s
       Rails.logger.info '-------- '
-      [method, args[0]]
+      if args[0].is_a? String
+        method + ' = \'' + args[0] + '\''
+      else
+        method + ' = ' + args[0]
+      end
     elsif %w(with which has).include? method
       args.flatten
     else
@@ -53,8 +57,13 @@ module Spike
   end
 
   def execute_method(method, args)
+    Rails.logger.info 'in model: ' + args[1].capitalize + ', execute method: ' + method + ', with args: ' + args.to_s
     if args[0] == 'all'
-      instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym))
+      if args.size > 2
+        instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym, :conditions => args[2]))
+      else
+        instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym))
+      end
     else
       instance_variable_set(('@' + args[1]), args[1].capitalize.constantize.send(method, args[0].to_sym))
     end
