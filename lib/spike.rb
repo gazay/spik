@@ -1,16 +1,14 @@
 module Spike
-  MODEL_NAMES = %w(post)
   WHICH_NAMES = %w(all first)
   METHOD_NAMES = %w(find delete)
 
   def method_missing(m, *a)
     m = m.to_s
-    Rails.logger.info m
-
-    if MODEL_NAMES.include?(m)
-      variable_method(m)
-    elsif MODEL_NAMES.include?(m[0..-2])
-      variable_method(m[0..-2])
+    Rails.logger.info '-------- ' + model_names.to_s
+    if model_names.include?(m)
+      variable_method(m, m)
+    elsif model_names.include?(m[0..-2])
+      variable_method(m, m[0..-2])
     elsif WHICH_NAMES.include?(m)
       if a[0] !~ /@/
         [m, a[0]]
@@ -26,8 +24,8 @@ module Spike
     end
   end
   
-  def variable_method(model_name)
-    instance_variable_get('@' + model_name) && '@' + model_name || model_name
+  def variable_method(variable_name, model_name)
+    instance_variable_get('@' + variable_name) && '@' + variable_name || model_name
   end
 
   def execute_method(method, args)
@@ -36,5 +34,10 @@ module Spike
     else
       instance_variable_set(('@' + args[1]), args[1].capitalize.constantize.send(method, args[0].to_sym))
     end
+  end
+
+  def model_names
+    Post
+    @@model_names ||= ActiveRecord::Base.subclasses.map{ |it| it.to_s.downcase }
   end
 end

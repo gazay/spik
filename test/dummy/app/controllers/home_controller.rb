@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 
   def index
     find first post
-    delete all posts
+    find all posts
   end
 end
