@@ -23,7 +23,7 @@ end
 
 After that you can work with variables @post and @posts:
 
-```html
+```erb
 <h1>Hello Spike!</h1>
 <%- if @posts %>
   <%= @posts.size %>
