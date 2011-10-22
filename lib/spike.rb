@@ -43,9 +43,9 @@ module Spike
       if args[0].is_a? String
         method + ' = \'' + args[0] + '\''
       else
-        method + ' = ' + args[0]
+        method + ' = ' + args[0].to_s
       end
-    elsif %w(with which has).include? method
+    elsif %w(with which has have).include? method
       args.flatten
     else
       Rails.logger.info '!!!!!!!!!+++++++++++!!!!!!!!!! ' + method + ' ---- ' + args.to_s

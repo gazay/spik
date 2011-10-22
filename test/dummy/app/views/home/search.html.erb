@@ -1,0 +1,12 @@
+<h1>Search</h1>
+<%- if @posts %>
+  <%= @posts.size %>
+  <%- @posts.each do |post| %>
+    <p>------------</p>
+    <%= post.title %>
+    <br/>
+    <%= post.body %>
+    <p>------------</p>
+  <%- end %>
+<%- end %>
+    
