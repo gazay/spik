@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 
   def index
     find first post
-    find all posts
+    # find all posts with id 15
   end
 end
