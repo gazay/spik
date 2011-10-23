@@ -62,6 +62,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 
     After this you have initiated instance variable in your controller @special_posts, and you can use it in your views and later in controller
 
+5.  Select rows from table with attribute like something:
+
+    ```ruby
+    find all table_name like attribute_name like 'something'
+    ```
+
+    for example with your table posts (and model Post) and table has attribute title:
+
+    ```ruby
+    find all posts with title like 'asd'
+    ```
+
+    After this you have initiated instance variable in your controller @posts with items which have title like 'asd' (asdf|qweasdf|asd|...), and you can use it in your views and later in controller
+
 ## Older usage
 
 If you want to get all your posts, you just include Spike module in controller and write 'find all posts':
