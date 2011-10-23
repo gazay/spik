@@ -6,61 +6,61 @@ The idea of this gem is experimenting with meta-programming abilities of Ruby. I
 
 Firstly I should tell you about syntax. It's not really recipe from all problems, but now we can tell something to Rails:
 
-1. Simple select from table:
+1.  Simple select from table:
 
-```ruby
-find all table_name
-```
+    ```ruby
+    find all table_name
+    ```
 
-for example with your table posts (and model Post):
+    for example with your table posts (and model Post):
 
-```ruby
-find all posts
-```
+    ```ruby
+    find all posts
+    ```
 
-After this you have initiated instance variable in your controller @posts, and you can use it in your views and later in controller
+    After this you have initiated instance variable in your controller @posts, and you can use it in your views and later in controller
 
-2. Select first row from your table:
+2.  Select first row from your table:
 
-```ruby
-find first table_name_row
-```
+    ```ruby
+    find first table_name_row
+    ```
 
-for example with your table posts (and model Post):
+    for example with your table posts (and model Post):
 
-```ruby
-find first post
-```
+    ```ruby
+    find first post
+    ```
 
-After this you have initiated instance variable in your controller @post, and you can use it in your views and later in controller
+    After this you have initiated instance variable in your controller @post, and you can use it in your views and later in controller
 
-3. Select rows from table with some condition:
+3.  Select rows from table with some condition:
 
-```ruby
-find all table_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
-```
+    ```ruby
+    find all table_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
+    ```
 
-for example with your table posts (and model Post) and table has attribute title:
+    for example with your table posts (and model Post) and table has attribute title:
 
-```ruby
-find all posts with title 'asdf'
-```
+    ```ruby
+    find all posts with title 'asdf'
+    ```
 
-After this you have initiated instance variable in your controller @posts, and you can use it in your views and later in controller
+    After this you have initiated instance variable in your controller @posts, and you can use it in your views and later in controller
 
-4. Select rows from table with new name of instance variable:
+4.  Select rows from table with new name of instance variable:
 
-```ruby
-find all table_name as what_you_want_your_variable_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
-```
+    ```ruby
+    find all table_name as what_you_want_your_variable_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
+    ```
 
-for example with your table posts (and model Post) and table has attribute title:
+    for example with your table posts (and model Post) and table has attribute title:
 
-```ruby
-find all posts as special_posts
-```
+    ```ruby
+    find all posts as special_posts
+    ```
 
-After this you have initiated instance variable in your controller @special_posts, and you can use it in your views and later in controller
+    After this you have initiated instance variable in your controller @special_posts, and you can use it in your views and later in controller
 
 ## Older usage
 
