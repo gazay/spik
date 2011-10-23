@@ -1,10 +1,23 @@
-<h1>Hello!</h1>
+<h1>Hello spike!</h1>
 <%- if @posts %>
+  <p>posts</p>
   <%= @posts.size %>
+  <br/>
+  <br/>
 <%- end %>
 <%- if @post %>
+  <p>post</p>
   <%= @post.title %>
+  <br/>
+  <br/>
 <%- end %>
 <%- if @special_posts %>
+  <p>special_posts</p>
   <%= @special_posts.first.title %>
+  <br/>
+  <br/>
+<%- end %>
+<%- if @asd_post %>
+  <p>asd_post</p>
+  <%= @asd_post.title %>
 <%- end %>

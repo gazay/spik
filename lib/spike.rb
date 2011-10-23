@@ -46,11 +46,15 @@ module Spike
       Rails.logger.info 'attributes include this method: ' + method
       Rails.logger.info 'args for this method: ' + args.to_s
       Rails.logger.info '-------- '
-      if args[0].is_a? String
+      if args[0] == 'like'
+        method + ' LIKE "%' + args[1] + '%"'
+      elsif args[0].is_a? String
         method + ' = \'' + args[0] + '\''
       else
         method + ' = ' + args[0].to_s
       end
+    elsif method == 'like'
+      [method, args]
     elsif %w(with which has have).include? method
       args.flatten
     elsif method == 'as'
