@@ -2,6 +2,8 @@ class HomeController < ApplicationController
   include Spike
 
   def index
+    Rails.logger.info '********* here we find all posts and write it in variable special_posts!'
+    find all posts as special_posts with title 'asdf'
     Rails.logger.info '********* here we find first post from all posts!'
     find first post
     Rails.logger.info '********* here we find all posts from all posts!'

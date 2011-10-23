@@ -1,9 +1,15 @@
+require 'spike/models'
+require 'spike/execution'
+
 module Spike
+  include Models
+  include Execution
+
   WHICH_NAMES = %w(all first)
   METHOD_NAMES = %w(find delete)
 
   def method_missing(method, *args)
-    Rails.logger.info args.class.to_s + ' ---->> ' + args.to_s
+    Rails.logger.info args.class.to_s + ' ---->> ' + args.to_s + ' by: ' + method.to_s
     args.flatten! if args.is_a? Array
     method = method.to_s
     Rails.logger.info '-------- ' + model_names.to_s
@@ -47,45 +53,13 @@ module Spike
       end
     elsif %w(with which has have).include? method
       args.flatten
+    elsif method == 'as'
+      ['as__' + args[0], args[1..-1]]
     else
-      Rails.logger.info '!!!!!!!!!+++++++++++!!!!!!!!!! ' + method + ' ---- ' + args.to_s
-    end
-  end
-
-  def execute_method(method, args)
-    Rails.logger.info 'in model: ' + args[1].capitalize + ', execute method: ' + method + ', with args: ' + args.to_s
-    if method == 'delete'
-      if args[0] == 'all'
-        args[1].capitalize.constantize.send('delete_all', args[2])
-      elsif args[2] =~ /id/
-        id = args[2].match(/(\d+)/)[0]
-        args[1].capitalize.constantize.send('delete', id)
-      elsif args[1] =~ /id/
-        id = args[1].match(/(\d+)/)[0]
-        args[0].capitalize.constantize.send('delete', id)
-      end
-    else
-      if args[0] == 'all'
-        if args.size > 2
-          instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym, :conditions => args[2]))
-        else
-          instance_variable_set(('@' + args[1] + 's'), args[1].capitalize.constantize.send(method, args[0].to_sym))
-        end
-      else
-        instance_variable_set(('@' + args[1]), args[1].capitalize.constantize.send(method, args[0].to_sym))
-      end
-    end
-  end
-
-  def model_names
-    @@model_names ||= ActiveRecord::Base.subclasses.map{ |it| it.to_s.downcase }
-  end
-
-  def attributes
-    @@attribute_names ||= {}.tap do |hash|
-      model_names.each do |model_name|
-        hash[model_name] = model_name.capitalize.constantize.attribute_names
-      end
+      Rails.logger.info 'here was unhandled method: ' + method
+      Rails.logger.info 'args for this method: ' + args.to_s
+      Rails.logger.info '-------- '
+      [method, args]
     end
   end
 end
