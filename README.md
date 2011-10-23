@@ -8,6 +8,8 @@ The idea of this gem is experimenting with meta-programming abilities of Ruby. I
 
 Firstly I should tell you about syntax. It's not really recipe from all problems, but now we can tell something to Rails:
 
+### Select
+
 1.  Simple select from table:
 
     ```ruby
@@ -78,9 +80,41 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 
     After this you have initiated instance variable in your controller @posts with items which have title like 'asd' (asdf|qweasdf|asd|...), and you can use it in your views and later in controller
 
-## Older usage
+### Delete
+
+1.  Delete all rows from table with attribute equals something:
+
+    ```ruby
+    delete all table_name with attribute_name 'something'
+    ```
+
+    for example with your table posts (and model Post) and table has attribute title:
+
+    ```ruby
+    delete all posts with title 'asd'
+    ```
+
+    After this all posts rows with title 'asd' will be deleted
+
+2.  Delete row from table with specific id:
+
+    ```ruby
+    delete [first] table_name_row with id (numeric)
+    ```
+
+    for example with your table posts (and model Post):
+
+    ```ruby
+    delete post with id 5
+    ```
+
+    After this post row with id 5 will be deleted
+
+### Usage in project
 
 If you want to get all your posts, you just include Spik module in controller and write 'find all posts':
+
+*app/controllers/home_controller.rb*
 
 ```ruby
 class HomeController < ApplicationController
@@ -98,6 +132,8 @@ end
 ```
 
 After that you can work with variables @post and @posts:
+
+*app/views/home/index.html.erb*
 
 ```erb
 <h1>Hello Spik!</h1>
