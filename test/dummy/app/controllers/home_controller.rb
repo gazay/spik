@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  include Spike
+  include Spik
 
   def index
     Rails.logger.info '********* here we find post which has title like "asd" as asd_post'

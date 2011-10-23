@@ -1,4 +1,4 @@
-# Let spike with Rails!
+# Let spik with Rails!
 
 The idea of this gem is experimenting with meta-programming abilities of Ruby. I want to talk with at first AR by imperative language.
 
@@ -80,11 +80,11 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 
 ## Older usage
 
-If you want to get all your posts, you just include Spike module in controller and write 'find all posts':
+If you want to get all your posts, you just include Spik module in controller and write 'find all posts':
 
 ```ruby
 class HomeController < ApplicationController
-  include Spike
+  include Spik
 
   def index
     find first post
@@ -100,7 +100,7 @@ end
 After that you can work with variables @post and @posts:
 
 ```erb
-<h1>Hello Spike!</h1>
+<h1>Hello Spik!</h1>
 <%- if @posts %>
   <%= @posts.size %>
 <%- end %>
@@ -114,16 +114,16 @@ After that you can work with variables @post and @posts:
 Puts this line into `Gemfile` then run `$ bundle`:
 
 ``` ruby
-gem 'spike', '0.0.1'
+gem 'spik', '0.0.1'
 ```
 
 Or if you are old-school Rails 2 developer put this into `config/environment.rb` and run `$ rake gems:install`:
 
 ``` ruby
-config.gem 'spike', :version => '0.0.1'
+config.gem 'spik', :version => '0.0.1'
 ```
 
-Or manually install spike gem: `$ gem install spike`
+Or manually install spik gem: `$ gem install spik`
 
 ## Contributors
 

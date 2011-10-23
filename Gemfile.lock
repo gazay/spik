@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spike (0.0.1)
+    spik (0.0.1)
       rails (~> 3.1.1)
 
 GEM
