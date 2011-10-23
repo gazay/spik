@@ -1,7 +1,6 @@
 module Spike
   module Execution
     def execute_method(method, args)
-      Rails.logger.info 'in model: ' + args[1].capitalize + ', execute method: ' + method + ', with args: ' + args.to_s
       if method == 'delete'
         if args[0] == 'all'
           args[1].capitalize.constantize.send('delete_all', args[2])
@@ -14,7 +13,6 @@ module Spike
         end
       else
         variable_name = args.find{ |it| it =~ /as__/ } || '@' + args[1]
-        Rails.logger.info 'this is variable name: ' + variable_name
         if variable_name =~ /as__/
           variable_name = '@' + variable_name.split('__').last
         elsif args[0] == 'all'

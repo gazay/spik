@@ -4,6 +4,8 @@ The idea of this gem is experimenting with meta-programming abilities of Ruby. I
 
 ## Usage
 
+**This works fine only in production, because only in production we can get all models**
+
 Firstly I should tell you about syntax. It's not really recipe from all problems, but now we can tell something to Rails:
 
 1.  Simple select from table:
@@ -109,7 +111,19 @@ After that you can work with variables @post and @posts:
 
 ## Installation
 
-This gem has no version now. I just start my experiment ;)
+Puts this line into `Gemfile` then run `$ bundle`:
+
+``` ruby
+gem 'spike', '0.0.1'
+```
+
+Or if you are old-school Rails 2 developer put this into `config/environment.rb` and run `$ rake gems:install`:
+
+``` ruby
+config.gem 'spike', :version => '0.0.1'
+```
+
+Or manually install spike gem: `$ gem install spike`
 
 ## Contributors
 
