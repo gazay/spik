@@ -61,7 +61,7 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
     @table_name = TableName.find(:all, :conditions => ['attribute = ?', value])
 
     # with Spike:
-    find all table_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
+    find all table_name (with|which has|which have|who have|who has) (attribute_name) (id as numeric|'string in quotes')
     ```
 
     for example with your table posts (and model Post) and table has attribute title:
@@ -83,7 +83,7 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
     @what_you_want_your_variable_name = TableName.find(:all)
 
     # with Spik:
-    find all table_name as what_you_want_your_variable_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
+    find all table_name as what_you_want_your_variable_name (with|which has|which have|who have| who has) (attribute_name) (id as numeric|'string in quotes')
     ```
 
     for example with your table posts (and model Post) and table has attribute title:

@@ -37,7 +37,7 @@ module Spik
       end
     elsif method == 'like'
       [method, args]
-    elsif %w(with which has have).include? method
+    elsif %w(with which has have who).include? method
       args.flatten
     elsif method == 'as'
       ['as__' + args[0], args[1..-1]]
