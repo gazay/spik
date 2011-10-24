@@ -13,12 +13,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 1.  Simple select from table:
 
     ```ruby
+    # regular variant:
+    @table_name = TableName.find(:all)
+
+    # with Spik:
     find all table_name
     ```
 
     for example with your table posts (and model Post):
 
     ```ruby
+    # regular variant:
+    @posts = Post.find(:all)
+
+    # with Spik:
     find all posts
     ```
 
@@ -27,12 +35,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 2.  Select first row from your table:
 
     ```ruby
+    # regular variant:
+    @table_name_row = TableName.find(:first)
+
+    # with Spik:
     find first table_name_row
     ```
 
     for example with your table posts (and model Post):
 
     ```ruby
+    # regular variant:
+    @post = Post.find(:first)
+
+    # with Spik:
     find first post
     ```
 
@@ -41,12 +57,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 3.  Select rows from table with some condition:
 
     ```ruby
+    # regular variant:
+    @table_name = TableName.find(:all, :conditions => ['attribute = ?', value])
+
+    # with Spike:
     find all table_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
     ```
 
     for example with your table posts (and model Post) and table has attribute title:
 
     ```ruby
+    # regular variant:
+    @posts = Post.find(:all, :conditions => ['title = ?', 'asdf'])
+
+    # with Spik:
     find all posts with title 'asdf'
     ```
 
@@ -55,12 +79,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 4.  Select rows from table with new name of instance variable:
 
     ```ruby
+    # regular variant:
+    @what_you_want_your_variable_name = TableName.find(:all)
+
+    # with Spik:
     find all table_name as what_you_want_your_variable_name (with|which has|which have) (attribute_name) (id as numeric|'string in quotes')
     ```
 
     for example with your table posts (and model Post) and table has attribute title:
 
     ```ruby
+    # regular variant:
+    @special_posts = Post.find(:all)
+
+    # with Spik:
     find all posts as special_posts
     ```
 
@@ -69,12 +101,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 5.  Select rows from table with attribute like something:
 
     ```ruby
-    find all table_name like attribute_name like 'something'
+    # regular variant:
+    @table_name = TableName.find(:all, :conditions => ['attribute LIKE "%?%"', value])
+
+    # with Spik:
+    find all table_name with attribute_name like 'something'
     ```
 
     for example with your table posts (and model Post) and table has attribute title:
 
     ```ruby
+    # regular variant:
+    @posts = Post.find(:all, :conditions => ['title LIKE "%?%"', 'asd'])
+
+    # with Spik:
     find all posts with title like 'asd'
     ```
 
@@ -85,12 +125,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 1.  Delete all rows from table with attribute equals something:
 
     ```ruby
+    # regular variant:
+    TableName.delete_all(['attribute = ?', value])
+
+    # with Spik:
     delete all table_name with attribute_name 'something'
     ```
 
     for example with your table posts (and model Post) and table has attribute title:
 
     ```ruby
+    # regular variant:
+    Post.delete_all(['title = ?', 'asd'])
+
+    # with Spik:
     delete all posts with title 'asd'
     ```
 
@@ -99,12 +147,20 @@ Firstly I should tell you about syntax. It's not really recipe from all problems
 2.  Delete row from table with specific id:
 
     ```ruby
+    # regular variant:
+    TableName.delete(id)
+
+    # with Spik:
     delete [first] table_name_row with id (numeric)
     ```
 
     for example with your table posts (and model Post):
 
     ```ruby
+    # regular variant:
+    Post.delete(5)
+
+    # with Spik:
     delete post with id 5
     ```
 
