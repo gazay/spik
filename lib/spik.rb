@@ -35,9 +35,11 @@ module Spik
       else
         method + ' = ' + args[0].to_s
       end
+    elsif !class_methods.select{ |k,v| v.include? method.to_sym }.empty?
+      execute_class_method(method, args[0], args[1])
     elsif method == 'like'
       [method, args]
-    elsif %w(with which has have who).include? method
+    elsif %w(with which has have who from).include? method
       args.flatten
     elsif method == 'as'
       ['as__' + args[0], args[1..-1]]

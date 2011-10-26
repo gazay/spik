@@ -25,5 +25,14 @@ module Spik
         end
       end
     end
+    
+    def execute_class_method(method, model_name, as_name = nil)
+      variable_name = '@' + method + '_' + model_name + 's'
+      variable_name = '@' + as_name.split('__').last if as_name
+
+      instance_variable_set(variable_name, model_name.capitalize.constantize.send(method))
+
+      variable_name
+    end
   end
 end

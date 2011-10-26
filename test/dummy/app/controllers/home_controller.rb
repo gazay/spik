@@ -2,6 +2,10 @@ class HomeController < ApplicationController
   include Spik
 
   def index
+    Rails.logger.info '********* here we find popular posts'
+    find popular posts
+    Rails.logger.info '********* here we find titles from posts as titled_posts'
+    find titles from posts as titled_posts
     Rails.logger.info '********* here we find post which has title like "asd" as asd_post'
     find first post as asd_post with title like 'f2'
     Rails.logger.info '********* here we find all posts and write it in variable special_posts!'
