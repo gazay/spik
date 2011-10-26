@@ -8,6 +8,60 @@ The idea of this gem is experimenting with meta-programming abilities of Ruby. I
 
 Firstly I should tell you about syntax. It's not really recipe from all problems, but now we can tell something to Rails:
 
+### Model methods
+
+1.  Execute scope method or model method with writing it in variable with generated name
+
+    ```ruby
+    # regular variant:
+    @scope_name_table_name = TableName.scope
+
+    # with Spik:
+    find scope_name [from] table_name
+    # or
+    scope_name [from] table_name
+    ```
+
+    for example with your table posts (and model Post with :popular scope):
+
+    ```ruby
+    # regular variant:
+    @popular_posts = Post.popular
+
+    # with Spik:
+    find popular posts
+    # or
+    popular posts
+    # or
+    find popular from posts
+    ```
+
+2.  Execute scope method or model method with writing it in variable with custom name
+
+    ```ruby
+    # regular variant:
+    @custom_variable_name = TableName.scope
+
+    # with Spik:
+    find scope_name [from] table_name as custom_variable_name
+    # or
+    scope_name [from] table_name as custom_variable_name
+    ```
+
+    for example with your table posts (and model Post with :popular scope):
+
+    ```ruby
+    # regular variant:
+    @my_posts = Post.popular
+
+    # with Spik:
+    find popular posts as my_posts
+    # or
+    popular posts as 'my_posts'
+    # or
+    find popular from posts as my_posts
+    ```
+
 ### Select
 
 1.  Simple select from table:
@@ -206,13 +260,13 @@ After that you can work with variables @post and @posts:
 Puts this line into `Gemfile` then run `$ bundle`:
 
 ``` ruby
-gem 'spik', '0.0.1'
+gem 'spik', '0.0.2'
 ```
 
 Or if you are old-school Rails 2 developer put this into `config/environment.rb` and run `$ rake gems:install`:
 
 ``` ruby
-config.gem 'spik', :version => '0.0.1'
+config.gem 'spik', :version => '0.0.2'
 ```
 
 Or manually install spik gem: `$ gem install spik`
