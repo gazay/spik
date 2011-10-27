@@ -1,6 +1,10 @@
 # Let spik with Rails!
 
-The idea of this gem is experimenting with meta-programming abilities of Ruby. I want to talk with at first AR by imperative language.
+The idea of this gem is **experimenting** with meta-programming abilities of Ruby just for **FUN**. I want to talk with at first AR by imperative language.
+
+Really guys, don't be so serious ;)
+
+![I are serious cat. You dont. Stop this.](https://github.com/gazay/spik/doc/serious-cat.jpg)
 
 ## Usage
 
