@@ -4,7 +4,7 @@ The idea of this gem is **experimenting** with meta-programming abilities of Rub
 
 Really guys, don't be so serious ;)
 
-![I are serious cat. You dont. Stop this.](https://github.com/gazay/spik/doc/serious-cat.jpg)
+![I are serious cat. You dont. Stop this.](https://github.com/gazay/spik/raw/master/doc/serious-cat.jpg)
 
 ## Usage
 
