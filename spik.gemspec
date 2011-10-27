@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Spik::VERSION
   s.authors     = ["Alexey Gaziev"]
   s.email       = ["alex.gaziev@gmail.com"]
-  # s.homepage    = "TODO"
+  s.homepage    = "https://github.com/gazay/spik"
   s.summary     = "Imperative speaking with Rails"
   s.description = "You can say something and controller understands you"
 
