@@ -260,13 +260,13 @@ After that you can work with variables @post and @posts:
 Puts this line into `Gemfile` then run `$ bundle`:
 
 ``` ruby
-gem 'spik', '0.0.2'
+gem 'spik', '0.0.3'
 ```
 
 Or if you are old-school Rails 2 developer put this into `config/environment.rb` and run `$ rake gems:install`:
 
 ``` ruby
-config.gem 'spik', :version => '0.0.2'
+config.gem 'spik', :version => '0.0.3'
 ```
 
 Or manually install spik gem: `$ gem install spik`
