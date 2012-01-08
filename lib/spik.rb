@@ -12,6 +12,10 @@ module Spik
     method = method.to_s
 
     # TODO: catch methods, which cannot be variable name
-    spik_method(method, args) # or raise NoMethodError.new('There is no method "' + method + '"')
+    if reuslt = spik_method(method, args) # or raise NoMethodError.new('There is no method "' + method + '"')
+      result
+    else
+      raise NoMethodError.new
+    end
   end
 end
